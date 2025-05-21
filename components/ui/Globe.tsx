@@ -149,7 +149,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
   }, [data, globeRef, globeConfig]);
 
   useEffect(() => {
-    if (globeRef.current && globeData) {
+    if (typeof window !== 'undefined' && globeRef.current && globeData) {
       globeRef.current
         .hexPolygonsData(countries.features)
         .hexPolygonResolution(3)
@@ -162,7 +162,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
         });
       startAnimation();
     }
-  }, [globeData]);
+  }, [globeData, defaultProps.showAtmosphere, defaultProps.atmosphereColor, defaultProps.atmosphereAltitude, defaultProps.polygonColor, startAnimation]);
 
   const startAnimation = () => {
     if (!globeRef.current || !globeData) return;
@@ -234,10 +234,12 @@ export function WebGLRendererConfig() {
   const { gl, size } = useThree();
 
   useEffect(() => {
-    gl.setPixelRatio(window.devicePixelRatio);
-    gl.setSize(size.width, size.height);
-    gl.setClearColor(0xffaaff, 0);
-  }, []);
+    if (typeof window !== 'undefined') {
+      gl.setPixelRatio(window.devicePixelRatio);
+      gl.setSize(size.width, size.height);
+      gl.setClearColor(0xffaaff, 0);
+    }
+  }, [gl, size.width, size.height]);
 
   return null;
 }
