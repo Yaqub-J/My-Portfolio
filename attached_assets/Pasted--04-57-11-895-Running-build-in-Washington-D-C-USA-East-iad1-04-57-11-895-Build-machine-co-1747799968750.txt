@@ -1,0 +1,73 @@
+[04:57:11.895] Running build in Washington, D.C., USA (East) – iad1
+[04:57:11.895] Build machine configuration: 2 cores, 8 GB
+[04:57:11.911] Cloning github.com/Yaqub-J/My-Portfolio (Branch: main, Commit: c8b16cd)
+[04:57:12.085] Previous build caches not available
+[04:57:12.772] Cloning completed: 861.000ms
+[04:57:13.127] Running "vercel build"
+[04:57:13.553] Vercel CLI 42.1.1
+[04:57:13.844] Installing dependencies...
+[04:57:15.282] npm warn EBADENGINE Unsupported engine {
+[04:57:15.283] npm warn EBADENGINE   package: 'react-lottie@1.2.4',
+[04:57:15.283] npm warn EBADENGINE   required: { npm: '^3.0.0' },
+[04:57:15.284] npm warn EBADENGINE   current: { node: 'v22.15.1', npm: '10.9.2' }
+[04:57:15.284] npm warn EBADENGINE }
+[04:57:18.114] npm warn deprecated npmlog@5.0.1: This package is no longer supported.
+[04:57:19.239] npm warn deprecated gauge@3.0.2: This package is no longer supported.
+[04:57:19.800] npm warn deprecated are-we-there-yet@2.0.0: This package is no longer supported.
+[04:57:21.783] npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+[04:57:21.944] npm warn deprecated debug@4.1.1: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[04:57:22.054] npm warn deprecated uuid@3.3.2: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+[04:57:27.887] npm warn deprecated core-js@2.6.12: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+[04:57:37.165] 
+[04:57:37.165] added 858 packages in 23s
+[04:57:37.165] 
+[04:57:37.165] 170 packages are looking for funding
+[04:57:37.165]   run `npm fund` for details
+[04:57:37.224] Detected Next.js version: 14.1.4
+[04:57:37.232] Running "npm run build"
+[04:57:37.348] 
+[04:57:37.349] > portfolio@0.1.0 build
+[04:57:37.349] > next build
+[04:57:37.349] 
+[04:57:38.137] Attention: Next.js now collects completely anonymous telemetry regarding usage.
+[04:57:38.137] This information is used to shape Next.js' roadmap and prioritize features.
+[04:57:38.137] You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+[04:57:38.137] https://nextjs.org/telemetry
+[04:57:38.137] 
+[04:57:38.215]    ▲ Next.js 14.1.4
+[04:57:38.216]    - Experiments (use at your own risk):
+[04:57:38.216]      · instrumentationHook
+[04:57:38.216] 
+[04:57:38.280]    Creating an optimized production build ...
+[04:57:38.704] [@sentry/nextjs] DEPRECATION WARNING: It is recommended renaming your `sentry.client.config.ts` file, or moving its content to `instrumentation-client.ts`. When using Turbopack `sentry.client.config.ts` will no longer work. Read more about the `instrumentation-client.ts` file: https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation-client
+[04:58:13.102] Failed to compile.
+[04:58:13.102] 
+[04:58:13.103] ./components/ui/Globe.tsx
+[04:58:13.103] Error: 
+[04:58:13.103]   [31mx[0m Expected ',', got '}'
+[04:58:13.103]      ,-[[36;1;4m/vercel/path0/components/ui/Globe.tsx[0m:97:1]
+[04:58:13.103]  [2m 97[0m |     _buildData();
+[04:58:13.103]  [2m 98[0m |     _buildMaterial();
+[04:58:13.103]  [2m 99[0m |     }
+[04:58:13.103]  [2m100[0m |   }, [globeRef.current]);
+[04:58:13.103]      : [31;1m  ^[0m
+[04:58:13.103]  [2m101[0m | 
+[04:58:13.103]  [2m102[0m |   const _buildMaterial = () => {
+[04:58:13.103]  [2m103[0m |     if (!globeRef.current) return;
+[04:58:13.103]      `----
+[04:58:13.104] 
+[04:58:13.104] Caused by:
+[04:58:13.104]     Syntax Error
+[04:58:13.104] 
+[04:58:13.104] Import trace for requested module:
+[04:58:13.104] ./components/ui/Globe.tsx
+[04:58:13.104] ./components/ui/GridGlobe.tsx
+[04:58:13.104] ./components/ui/BentoGrid.tsx
+[04:58:13.104] ./components/Grid.tsx
+[04:58:13.104] ./app/page.tsx
+[04:58:13.104] 
+[04:58:13.105] 
+[04:58:13.107] > Build failed because of webpack errors
+[04:58:13.190] Error: Command "npm run build" exited with 1
+[04:58:13.612] 
+[04:58:16.722] Exiting build container
