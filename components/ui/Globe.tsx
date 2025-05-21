@@ -148,6 +148,44 @@ export function Globe({ globeConfig, data }: WorldProps) {
     buildMaterial();
   }, [data, globeRef, globeConfig]);
 
+  const startAnimation = () => {
+    if (!globeRef.current || !globeData) return;
+
+    globeRef.current
+      .arcsData(data)
+      .arcStartLat((d) => (d as { startLat: number }).startLat * 1)
+      .arcStartLng((d) => (d as { startLng: number }).startLng * 1)
+      .arcEndLat((d) => (d as { endLat: number }).endLat * 1)
+      .arcEndLng((d) => (d as { endLng: number }).endLng * 1)
+      .arcColor((e: any) => (e as { color: string }).color)
+      .arcAltitude((e) => {
+        return (e as { arcAlt: number }).arcAlt * 1;
+      })
+      .arcStroke((e) => {
+        return [0.32, 0.28, 0.3][Math.round(Math.random() * 2)];
+      })
+      .arcDashLength(defaultProps.arcLength)
+      .arcDashInitialGap((e) => (e as { order: number }).order * 1)
+      .arcDashGap(15)
+      .arcDashAnimateTime((e) => defaultProps.arcTime);
+
+    globeRef.current
+      .pointsData(data)
+      .pointColor((e) => (e as { color: string }).color)
+      .pointsMerge(true)
+      .pointAltitude(0.0)
+      .pointRadius(2);
+
+    globeRef.current
+      .ringsData([])
+      .ringColor((e: any) => (t: any) => e.color(t))
+      .ringMaxRadius(defaultProps.maxRings)
+      .ringPropagationSpeed(RING_PROPAGATION_SPEED)
+      .ringRepeatPeriod(
+        (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
+      );
+  };
+
   useEffect(() => {
     if (typeof window !== 'undefined' && globeRef.current && globeData) {
       globeRef.current
@@ -162,9 +200,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
         });
       startAnimation();
     }
-  }, [globeData, defaultProps.showAtmosphere, defaultProps.atmosphereColor, defaultProps.atmosphereAltitude, defaultProps.polygonColor, startAnimation]);
-
-  const startAnimation = () => {
+  }, [globeData, defaultProps.showAtmosphere, defaultProps.atmosphereColor, defaultProps.atmosphereAltitude, defaultProps.polygonColor]);
     if (!globeRef.current || !globeData) return;
 
     globeRef.current
