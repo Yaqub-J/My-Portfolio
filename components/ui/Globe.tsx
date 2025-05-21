@@ -223,10 +223,10 @@ export function Globe({ globeConfig, data }: WorldProps) {
         .hexPolygonColor(() => defaultProps.polygonColor);
       startAnimation();
     }
-  }, [globeData, defaultProps.showAtmosphere, defaultProps.atmosphereColor, defaultProps.atmosphereAltitude, defaultProps.polygonColor, data]);
+  }, [globeData, defaultProps.showAtmosphere, defaultProps.atmosphereColor, defaultProps.atmosphereAltitude, defaultProps.polygonColor, data, startAnimation]);
 
   useEffect(() => {
-    if (!globeRef.current || !globeData) return;
+    if (typeof window === 'undefined' || !globeRef.current || !globeData) return;
 
     const interval = setInterval(() => {
       if (!globeRef.current || !globeData) return;
