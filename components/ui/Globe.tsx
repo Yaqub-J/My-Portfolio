@@ -40,7 +40,6 @@ export type GlobeConfig = {
   ambientLight?: string;
   directionalLeftLight?: string;
   directionalTopLight?: string;
-  directionalTopLight?: string;
   pointLight?: string;
   arcTime?: number;
   arcLength?: number;
@@ -95,9 +94,8 @@ export function Globe({ globeConfig, data }: WorldProps) {
   useEffect(() => {
     if (typeof window === 'undefined' || !globeRef.current) return;
 
-    if (globeRef.current) {
-      _buildData();
-      _buildMaterial();
+    _buildData();
+    _buildMaterial();
     }
   }, [globeRef.current]);
 
@@ -224,7 +222,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     return () => {
       clearInterval(interval);
     };
-  }, [globeRef.current, globeData, data]);
+  }, [_buildData, _buildMaterial, globeData, data]);
 
   return (
     <>
