@@ -93,11 +93,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
   useEffect(() => {
     if (typeof window === 'undefined' || !globeRef.current) return;
-
     _buildData();
     _buildMaterial();
-    }
-  }, [globeRef.current]);
+  }, [_buildData, _buildMaterial]);
 
   const _buildMaterial = () => {
     if (!globeRef.current) return;
@@ -222,7 +220,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     return () => {
       clearInterval(interval);
     };
-  }, [_buildData, _buildMaterial, globeData, data]);
+  }, [globeData, data]);
 
   return (
     <>
