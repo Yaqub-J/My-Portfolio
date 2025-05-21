@@ -1,0 +1,59 @@
+[16:49:48.964] Running build in Washington, D.C., USA (East) – iad1
+[16:49:48.964] Build machine configuration: 2 cores, 8 GB
+[16:49:48.981] Cloning github.com/Yaqub-J/My-Portfolio (Branch: main, Commit: 14eaced)
+[16:49:49.163] Previous build caches not available
+[16:49:49.926] Cloning completed: 944.000ms
+[16:49:50.293] Running "vercel build"
+[16:49:50.743] Vercel CLI 42.1.1
+[16:49:51.070] Installing dependencies...
+[16:49:52.592] npm warn EBADENGINE Unsupported engine {
+[16:49:52.592] npm warn EBADENGINE   package: 'react-lottie@1.2.4',
+[16:49:52.593] npm warn EBADENGINE   required: { npm: '^3.0.0' },
+[16:49:52.593] npm warn EBADENGINE   current: { node: 'v22.15.1', npm: '10.9.2' }
+[16:49:52.593] npm warn EBADENGINE }
+[16:49:55.458] npm warn deprecated npmlog@5.0.1: This package is no longer supported.
+[16:49:56.628] npm warn deprecated gauge@3.0.2: This package is no longer supported.
+[16:49:57.243] npm warn deprecated are-we-there-yet@2.0.0: This package is no longer supported.
+[16:49:59.416] npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+[16:49:59.618] npm warn deprecated debug@4.1.1: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[16:49:59.755] npm warn deprecated uuid@3.3.2: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+[16:50:05.638] npm warn deprecated core-js@2.6.12: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+[16:50:14.583] 
+[16:50:14.584] added 858 packages in 23s
+[16:50:14.584] 
+[16:50:14.584] 170 packages are looking for funding
+[16:50:14.584]   run `npm fund` for details
+[16:50:14.653] Detected Next.js version: 14.1.4
+[16:50:14.658] Running "npm run build"
+[16:50:15.045] 
+[16:50:15.047] > portfolio@0.1.0 build
+[16:50:15.048] > next build
+[16:50:15.048] 
+[16:50:16.219] Attention: Next.js now collects completely anonymous telemetry regarding usage.
+[16:50:16.220] This information is used to shape Next.js' roadmap and prioritize features.
+[16:50:16.220] You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+[16:50:16.220] https://nextjs.org/telemetry
+[16:50:16.220] 
+[16:50:16.296]    ▲ Next.js 14.1.4
+[16:50:16.297]    - Experiments (use at your own risk):
+[16:50:16.297]      · instrumentationHook
+[16:50:16.297] 
+[16:50:16.361]    Creating an optimized production build ...
+[16:50:16.794] [@sentry/nextjs] DEPRECATION WARNING: It is recommended renaming your `sentry.client.config.ts` file, or moving its content to `instrumentation-client.ts`. When using Turbopack `sentry.client.config.ts` will no longer work. Read more about the `instrumentation-client.ts` file: https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation-client
+[16:51:15.624]  ✓ Compiled successfully
+[16:51:15.625]    Linting and checking validity of types ...
+[16:51:26.381] Failed to compile.
+[16:51:26.382] 
+[16:51:26.382] ./components/ui/Globe.tsx:165:137
+[16:51:26.382] Type error: Block-scoped variable 'startAnimation' used before its declaration.
+[16:51:26.382] 
+[16:51:26.382] [0m [90m 163 |[39m       startAnimation()[33m;[39m[0m
+[16:51:26.383] [0m [90m 164 |[39m     }[0m
+[16:51:26.383] [0m[31m[1m>[22m[39m[90m 165 |[39m   }[33m,[39m [globeData[33m,[39m defaultProps[33m.[39mshowAtmosphere[33m,[39m defaultProps[33m.[39matmosphereColor[33m,[39m defaultProps[33m.[39matmosphereAltitude[33m,[39m defaultProps[33m.[39mpolygonColor[33m,[39m startAnimation])[33m;[39m[0m
+[16:51:26.383] [0m [90m     |[39m                                                                                                                                         [31m[1m^[22m[39m[0m
+[16:51:26.384] [0m [90m 166 |[39m[0m
+[16:51:26.384] [0m [90m 167 |[39m   [36mconst[39m startAnimation [33m=[39m () [33m=>[39m {[0m
+[16:51:26.384] [0m [90m 168 |[39m     [36mif[39m ([33m![39mglobeRef[33m.[39mcurrent [33m||[39m [33m![39mglobeData) [36mreturn[39m[33m;[39m[0m
+[16:51:26.551] Error: Command "npm run build" exited with 1
+[16:51:26.956] 
+[16:51:30.399] Exiting build container
