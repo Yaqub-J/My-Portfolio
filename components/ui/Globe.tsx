@@ -93,59 +93,60 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
   useEffect(() => {
     if (typeof window === 'undefined' || !globeRef.current) return;
-    _buildData();
-    _buildMaterial();
-  }, [_buildData, _buildMaterial]);
 
-  const _buildMaterial = () => {
-    if (!globeRef.current) return;
-
-    const globeMaterial = globeRef.current.globeMaterial() as unknown as {
-      color: Color;
-      emissive: Color;
-      emissiveIntensity: number;
-      shininess: number;
+    const buildMaterial = () => {
+      if (!globeRef.current) return;
+  
+      const globeMaterial = globeRef.current.globeMaterial() as unknown as {
+        color: Color;
+        emissive: Color;
+        emissiveIntensity: number;
+        shininess: number;
+      };
+      globeMaterial.color = new Color(globeConfig.globeColor);
+      globeMaterial.emissive = new Color(globeConfig.emissive);
+      globeMaterial.emissiveIntensity = globeConfig.emissiveIntensity || 0.1;
+      globeMaterial.shininess = globeConfig.shininess || 0.9;
     };
-    globeMaterial.color = new Color(globeConfig.globeColor);
-    globeMaterial.emissive = new Color(globeConfig.emissive);
-    globeMaterial.emissiveIntensity = globeConfig.emissiveIntensity || 0.1;
-    globeMaterial.shininess = globeConfig.shininess || 0.9;
-  };
+  
+    const buildData = () => {
+      const arcs = data;
+      let points = [];
+      for (let i = 0; i < arcs.length; i++) {
+        const arc = arcs[i];
+        const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
+        points.push({
+          size: defaultProps.pointSize,
+          order: arc.order,
+          color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
+          lat: arc.startLat,
+          lng: arc.startLng,
+        });
+        points.push({
+          size: defaultProps.pointSize,
+          order: arc.order,
+          color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
+          lat: arc.endLat,
+          lng: arc.endLng,
+        });
+      }
+  
+      // remove duplicates for same lat and lng
+      const filteredPoints = points.filter(
+        (v, i, a) =>
+          a.findIndex((v2) =>
+            ["lat", "lng"].every(
+              (k) => v2[k as "lat" | "lng"] === v[k as "lat" | "lng"]
+            )
+          ) === i
+      );
+  
+      setGlobeData(filteredPoints);
+    };
 
-  const _buildData = () => {
-    const arcs = data;
-    let points = [];
-    for (let i = 0; i < arcs.length; i++) {
-      const arc = arcs[i];
-      const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
-      points.push({
-        size: defaultProps.pointSize,
-        order: arc.order,
-        color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
-        lat: arc.startLat,
-        lng: arc.startLng,
-      });
-      points.push({
-        size: defaultProps.pointSize,
-        order: arc.order,
-        color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
-        lat: arc.endLat,
-        lng: arc.endLng,
-      });
-    }
-
-    // remove duplicates for same lat and lng
-    const filteredPoints = points.filter(
-      (v, i, a) =>
-        a.findIndex((v2) =>
-          ["lat", "lng"].every(
-            (k) => v2[k as "lat" | "lng"] === v[k as "lat" | "lng"]
-          )
-        ) === i
-    );
-
-    setGlobeData(filteredPoints);
-  };
+    buildData();
+    buildMaterial();
+  }, [data, globeRef, globeConfig]);
 
   useEffect(() => {
     if (globeRef.current && globeData) {
