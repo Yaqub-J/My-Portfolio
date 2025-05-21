@@ -52,7 +52,7 @@ const Hero = () => {
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi! I'm Yaqub Jae, a full-stack developer with a passion for
+            Hi! I am Yaqub Jae, a full-stack developer with a passion for
             creating beautiful and functional web applications.
           </p>
 
